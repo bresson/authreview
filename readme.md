@@ -16,6 +16,10 @@ curl -X GET http://localhost:3000/authrequired -b cookie-file.txt -L
 curl -X POST http://localhost:3000/login -b cookie-file.txt -H 'Content-Type: application/json' -d '{"email":"test@test.com", "password":"password"}'
 // You were authenticated & logged in!
 
+curl http://localhost:3000/login -c cookie-file.txt -H 
+// excluded the ‘-X POST’ flag as we want cURL to follow the redirect from the /login route to the /authrequired route, which we GET. If we leave the ‘-X POST’ flag then it will try to post to the /authrequired route as well. Instead, we’ll just let cURL infer what it should do on each route.
+
+
 
 - Curl parameters
 * -L -> follow redirects
